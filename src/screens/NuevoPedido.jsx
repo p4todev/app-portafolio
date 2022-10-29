@@ -7,15 +7,90 @@ import {
     Image,
     TouchableWithoutFeedback,
     TouchableOpacity,
+    FlatList,
 } from 'react-native'
 import AppBar from '../components/AppBar';
 import datatest from '../dataTest/data';
 import Icon from 'react-native-vector-icons/MaterialIcons'
 import SecodIcon from 'react-native-vector-icons/AntDesign'
 import Add from 'react-native-vector-icons/Ionicons'
-
+import data from '../dataTest/data';
 
 const Pedido = ()=>{
+    
+    const categorias = [
+  
+    {
+        status : 'Entrada',
+    },
+    {
+        status : 'Fondo',
+    },
+    {
+        status: 'Ensaladas',
+    },
+    {
+        status : 'Licores',
+    },
+    {
+        status : 'Jugos',
+    },
+    {
+        status : 'Postres',
+    },
+    {
+        status : 'Extras',
+    },
+    {
+        status : 'Promociones',
+    },];
+
+    const [status, setStatus] = React.useState(false);
+    const [dataList,setDataList] = React.useState(datatest);
+    const setSatatusFilter = status => {
+        if(status !== 'Todo'){
+            setDataList([...datatest.filter(e=>e.status===status)])
+        }else{
+            setDataList(datatest)
+        }
+        setStatus(status)
+    }
+
+    const renderItem = ({item,index}) => {
+        return (
+            <View key={item} >
+                <ScrollView showsVerticalScrollIndicator={false}>
+                    <View style={[styles.rec,styles.shadowProp]}>
+                        <View>
+                            <Image style={styles.foto} source={{uri : item.uri}}/>
+                        </View>
+                        <View  style={{
+                        width : 230,
+                    }}>
+                            <Text style={styles.titulo}>{item.Nombre}</Text>
+                            <Text style={{
+                                marginLeft : 10,
+                                fontFamily : 'uber-move'
+                            }}>{item.disponible}</Text>
+                            <Text style={{
+                                marginLeft : 10,
+                                color : 'black',
+                                fontFamily : 'uber-move',
+                                marginTop : 3,
+                            }}>{item.valor}</Text>
+                        </View>
+                        <View style={{
+                            justifyContent : 'center',
+                            alignItems : 'center',
+                        }}>
+                        <Add name="add-circle-outline" size={30} style={{color : 'red',}} />
+                        </View>
+                    </View>
+                </ScrollView>
+            </View>
+        )
+    }
+
     return(
      <View style={styles.contenedor}>
         <View style={{
@@ -35,52 +110,32 @@ const Pedido = ()=>{
                 </TouchableWithoutFeedback>
             </View>
         </View>
-        <AppBar />
-        <View style={{
-            height : '70%',
-        }}>
-        <ScrollView showsVerticalScrollIndicator={false}>
-        {datatest.map(rec=>(
-            <View style={[styles.rec,styles.shadowProp]}>
-                <View style={{flexDirection : 'row'}}>
-                    <View>
-                        <Image style={styles.foto} source={{uri : rec.uri}}/>
-                    </View>
-                    <View style={{
-                        width : 230,
-                    }}>
-                        <Text style={styles.titulo}>{rec.Nombre}</Text>
-                        <Text style={{
-                            marginLeft : 10,
-                            fontFamily : 'uber-move'
-                        }}>{rec.disponible}</Text>
-                        < >
-                            <View>
-                            <Text style={{
-                            marginLeft : 10,
-                            color : 'black',
-                            fontFamily : 'uber-move',
-                            marginTop : 3,
-                        }}>{rec.valor}</Text>
-                            </View>
-                        </>
-                    </View>
-                    <View style={{
-                        justifyContent : 'center',
-                        alignItems : 'center',
-                        
-                        
-                        
-                    }} >
-                        <Add name="add-circle-outline" size={30} style={{
-                            color : 'red',
-                        }}/>
-                    </View>
-                </View>
-            </View>
-        ))}
-        </ScrollView>
+        
+        
+        <View style={styles.bar}>
+            <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+                {
+                    categorias.map(e=>(
+                        <View>
+                            <TouchableOpacity style={[styles.elemento,status===e.status && styles.elementoActive]}
+                            onPress={()=>setSatatusFilter(e.status)}>
+                                <Text style={[styles.categoria,status===e.status && styles.categoriaActive]}>{e.status}</Text>
+                            </TouchableOpacity>
+                        </View>       
+                    ))
+                }
+            </ScrollView>
         </View>
+
+
+
+        <FlatList FlatList data={dataList} keyExtractor={(e,i)=>i.toString()}
+            renderItem={renderItem}>
+       
+        </FlatList>
+
+
+
         <View style={{
             alignItems : 'center',
         }}>
@@ -106,6 +161,36 @@ const Pedido = ()=>{
 }
 
 const styles = StyleSheet.create({
+    bar : {
+        flexDirection : 'row',
+        backgroundColor : 'white',
+        padding: 10,
+        border : '1px solid #eaeaea',
+    },
+    elementoActive : { 
+        backgroundColor : '#aa86f7'
+    },
+    elemento :{
+        width : 100,
+        height : 40,
+        justifyContent : 'center',
+        borderRadius : 20,
+        alignItems : 'center',
+        
+    },
+    categoriaActive : {
+        fontWeight : 'bold',
+        color : 'white',
+        borderStartColor : 'white',
+
+    },
+    categoria : {
+        fontWeight : 'bold',
+        fontFamily : 'uber-move',
+        fontSize : 17,
+        color : 'black'
+
+    },
     mesa :{
         fontSize :30,
         fontWeight : 'bold',
@@ -142,6 +227,7 @@ const styles = StyleSheet.create({
         backgroundColor : 'black',
         width : '50%',
         padding : 15,
+        marginBottom : 20,
         borderRadius : 8,
     },
     shadowProp: {

@@ -28,7 +28,7 @@ export default function App() {
   
   return (
     <View style={styles.container}>
-      <TestBar />
+      <Pedido />
       <StatusBar style="auto" />
     </View>
   );
