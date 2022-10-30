@@ -45,6 +45,10 @@ const Pedido = ()=>{
         status : 'Promociones',
     },];
 
+    const pedido =[{
+        
+    }]
+
     const [status, setStatus] = React.useState(false);
     const [dataList,setDataList] = React.useState(datatest);
     const setSatatusFilter = status => {
@@ -185,9 +189,9 @@ const styles = StyleSheet.create({
 
     },
     categoria : {
-        fontWeight : 'bold',
+        
         fontFamily : 'uber-move',
-        fontSize : 17,
+        fontSize : 15,
         color : 'black'
 
     },

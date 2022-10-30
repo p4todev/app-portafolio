@@ -7,6 +7,35 @@ import AppBar from '../components/AppBar'
 
 const Carrito = ()=>{
     const [modalVisible,setModalVisible] = React.useState(false);
+    const [aumentarValor,setAumentarValor] = React.useState(pedido)
+
+    {/*TODO: buscar la forma de incrementar y decramentar, ademas de que si el valor es = 0, preguntar con
+    una notificacion si de desea eliminar el producto.    
+    */} 
+
+    const pedido = [{
+        uri : 'https://www.gourmet.cl/wp-content/uploads/2018/04/Foto-editada-1.jpg',
+        nombre : 'Sopa de pollo',
+        valor : '$9.999',
+        cantidad : 1,
+    },
+    {
+        uri : 'https://www.gourmet.cl/wp-content/uploads/2018/04/Sopa-editada.jpg',
+        nombre : 'Sopa de verduras',
+        valor : '$9.999',
+        cantidad : 1,
+    }]
+ 
+    const sumar = (item,name)=>{
+        if(item.nombre === name){
+            setAumentarValor(valor=> item.valor + 1)
+        }
+    }
+
+    const restar = ()=>{
+        setAumentarValor(valor => valor - 1); 
+    }
+
     return(
         <View style={styles.contenedor}>
             <View style={{
@@ -64,7 +93,7 @@ const Carrito = ()=>{
                             }} placeholder='Agrega tu comentario'/>
                             <View style={styles.btn}>
                                 <TouchableWithoutFeedback onPress={()=>setModalVisible(false)}>
-                                    <Text style={{color : 'white', fontWeight : 'bold',textAlign : 'center',fontFamily : 'uber-move',width : '100%'}}>Agregar</Text>
+                                <Text style={{color : 'white', fontWeight : 'bold',textAlign : 'center',fontFamily : 'uber-move',width : '100%'}}>Agregar</Text>
                                 </TouchableWithoutFeedback>
                             </View>
                         </View> 
@@ -75,7 +104,7 @@ const Carrito = ()=>{
                 height : '65%',
             }}>
             <ScrollView showsVerticalScrollIndicator={false}>
-        {datatest.map(rec=>(
+        {pedido.map(rec=>(
             <View style={[styles.rec,styles.shadowProp]}>
                 <View style={{flexDirection : 'row'}}>
                     <View>
@@ -84,7 +113,7 @@ const Carrito = ()=>{
                     <View style={{
                         width : 220,
                     }}>
-                        <Text style={styles.titulo}>{rec.Nombre}</Text>
+                        <Text style={styles.titulo}>{rec.nombre}</Text>
                         <Text style={{
                             marginLeft : 10,
                             fontFamily : 'uber-move',
@@ -106,9 +135,13 @@ const Carrito = ()=>{
                         alignItems : 'center', 
                         flexDirection : 'row'                   
                     }} >
-                        <Minus name="minus" size={30} style={[styles.icono,styles.shadowProp]}/>
-                        <Text style={[styles.cantidad,styles.shadowProp]}>1</Text>
-                        <Add name="plus" size={30} style={[styles.icono,styles.shadowProp]} />
+                        <Minus name="minus" size={30} style={[styles.icono,styles.shadowProp]}
+                        onPress={()=>restar()}
+                        
+                        />
+                        <Text name={rec.nombre} style={[styles.cantidad,styles.shadowProp]}>{rec.cantidad}</Text>
+                        <Add name="plus" size={30} style={[styles.icono,styles.shadowProp]} 
+                        />
                     </View>
                 </View>
             </View>
@@ -128,7 +161,7 @@ const Carrito = ()=>{
                     <Text style={{color : 'black', fontSize : 20}}>Total</Text>
                 </View>
                 <View>
-                    <Text style={{color: 'black',fontSize : 20,fontWeight : 'bold'}}>$9.999.999</Text>
+                    <Text style={{color: 'black',fontSize : 20}}>$9.999.999</Text>
                 </View>
             </View>
         </View>
@@ -161,12 +194,12 @@ const Carrito = ()=>{
 
 const styles = StyleSheet.create({
     totalContenedor : {
-        backgroundColor : '#E4E4E4',
+        backgroundColor : 'white',
         height : '10%',
         width : '95%',
         margin : 10,
         marginTop: 20,
-        borderRadius : 20,
+  
         padding : 15,
     },  
     icono : {

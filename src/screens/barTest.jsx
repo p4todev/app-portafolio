@@ -50,6 +50,8 @@ const testBar = ()=>{
         setStatus(status)
     }
 
+    
+
     const renderItem = ({item,index}) => {
         return (
             <View key={item} style={styles.itemContainer}>
