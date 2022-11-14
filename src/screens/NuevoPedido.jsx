@@ -137,29 +137,6 @@ const Pedido = ()=>{
             renderItem={renderItem}>
        
         </FlatList>
-
-
-
-        <View style={{
-            alignItems : 'center',
-        }}>
-            <TouchableOpacity style={styles.pedidoBtn}>
-                <View style={{
-                    flexDirection : 'row',
-                    textAlign  : 'center',
-                    justifyContent : 'center'
-                }}>
-                    <Text style={{
-                        color : 'white',
-                        textAlign : 'center',
-                        fontWeight : 'bold',
-                        fontSize : 17,
-                        fontFamily : 'uber-move'
-                    }}>Pedido</Text>
-                    <SecodIcon name="shoppingcart" type="AntDesign" size={20} style={{color : 'white'}}/>
-                </View>
-            </TouchableOpacity>
-        </View>
      </View>
     )
 }

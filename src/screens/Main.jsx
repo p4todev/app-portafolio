@@ -91,7 +91,7 @@ const Main = () => {
                         }}>
                             <Text style={{
                                     color : 'black',
-                                    fontFamily : 'uber-move',
+                                    fontFamily : '',
                                     fontSize : 25,
                                     fontWeight : 'bold',
                                     marginLeft : 0,
@@ -117,10 +117,6 @@ const Main = () => {
                             </ScrollView>
                         </View>
                     </View>
-            </View>
-            <View style={styles.botonera}>
-                <TouchableOpacity style={styles.buttons}><Text style={styles.textBtn} >Nueva Orden</Text></TouchableOpacity>
-                <TouchableOpacity style={styles.buttons}><Text style={styles.textBtn} >Estado Orden</Text></TouchableOpacity>
             </View>
         </View>
     )

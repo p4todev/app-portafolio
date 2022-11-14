@@ -1,11 +1,8 @@
-import React from 'react';
-import { 
-    StyleSheet, 
-    View, 
-    Text,
-    TextInput,
-    TouchableOpacity} from 'react-native';
-
+import * as React from 'react';
+import {Button, StyleSheet, View, Text, TextInput, TouchableOpacity, Modal} from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { StatusBar } from 'expo-status-bar';
 
     const Login = ()=>{
         //TODO: Validar el login despues con estos datos de prueba.
@@ -23,16 +20,7 @@ import {
                 <Text style={styles.titulo}>Inicio sesion</Text>
                 <TextInput style={styles.inputs} placeholder='Ingresa tu rut' />
                 <TextInput style={styles.inputs} secureTextEntry={true} placeholder='Ingresa tu contraseña' />
-                <TouchableOpacity style={styles.boton}><Text style={{
-                    color : 'white',
-                    textAlign : 'center',
-                    fontWeight : 'bold',
-                }}>Ingresar</Text></TouchableOpacity>
-                <View>
-                    <Text style={styles.pass}>Olvidaste la contraseña?, Click aqui!</Text>
-                </View>
-            </View>
-            
+            </View>   
         )
     }
     
@@ -68,8 +56,14 @@ import {
         pass : {
             color : '#3897FC',
             marginTop : 50,
-        }
-
+        },
+        container: {
+            flex: 1,
+            backgroundColor: '#fff',
+            alignItems: 'center',
+            justifyContent: 'center',
+            
+          },
 
     
     });
