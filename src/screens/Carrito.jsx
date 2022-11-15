@@ -7,7 +7,7 @@ import AppBar from '../components/AppBar'
 
 const Carrito = ()=>{
     const [modalVisible,setModalVisible] = React.useState(false);
-    const [aumentarValor,setAumentarValor] = React.useState(pedido)
+    const [aumentarValor,setAumentarValor] = React.useState(1)
 
     {/*TODO: buscar la forma de incrementar y decramentar, ademas de que si el valor es = 0, preguntar con
     una notificacion si de desea eliminar el producto.    
@@ -15,25 +15,33 @@ const Carrito = ()=>{
 
     const pedido = [{
         uri : 'https://www.gourmet.cl/wp-content/uploads/2018/04/Foto-editada-1.jpg',
+        id : 1,
         nombre : 'Sopa de pollo',
-        valor : '$9.999',
-        cantidad : 1,
+        valor : 9.999,
+        cantidad : aumentarValor, //,
     },
     {
         uri : 'https://www.gourmet.cl/wp-content/uploads/2018/04/Sopa-editada.jpg',
+        id : 2,
         nombre : 'Sopa de verduras',
-        valor : '$9.999',
-        cantidad : 1,
-    }]
+        valor : 8.999,
+        cantidad : aumentarValor,
+    },
+    {
+        uri : 'https://www.gourmet.cl/wp-content/uploads/2018/04/Sopa-editada.jpg',
+        id : 2,
+        nombre : 'Sopa de verduras',
+        valor : 8.999,
+        cantidad : aumentarValor,
+    },]
  
-    const sumar = (item,name)=>{
-        if(item.nombre === name){
-            setAumentarValor(valor=> item.valor + 1)
-        }
-    }
+    const sumar = (item)=>{
+        let total = 0;
+        pedido.forEach(pedido=>{
+            total = total + pedido.valor;
+        })
 
-    const restar = ()=>{
-        setAumentarValor(valor => valor - 1); 
+        return total;
     }
 
     return(
@@ -135,13 +143,7 @@ const Carrito = ()=>{
                         alignItems : 'center', 
                         flexDirection : 'row'                   
                     }} >
-                        <Minus name="minus" size={30} style={[styles.icono,styles.shadowProp]}
-                        onPress={()=>restar()}
-                        
-                        />
-                        <Text name={rec.nombre} style={[styles.cantidad,styles.shadowProp]}>{rec.cantidad}</Text>
-                        <Add name="plus" size={30} style={[styles.icono,styles.shadowProp]} 
-                        />
+                      
                     </View>
                 </View>
             </View>
@@ -161,7 +163,7 @@ const Carrito = ()=>{
                     <Text style={{color : 'black', fontSize : 20}}>Total</Text>
                 </View>
                 <View>
-                    <Text style={{color: 'black',fontSize : 20}}>$9.999.999</Text>
+                    <Text style={{fontSize:20}}>${sumar(pedido)}</Text>
                 </View>
             </View>
         </View>
