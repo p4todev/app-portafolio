@@ -9,10 +9,6 @@ const Carrito = ()=>{
     const [modalVisible,setModalVisible] = React.useState(false);
     const [aumentarValor,setAumentarValor] = React.useState(pedido)
 
-    {/*TODO: buscar la forma de incrementar y decramentar, ademas de que si el valor es = 0, preguntar con
-    una notificacion si de desea eliminar el producto.    
-    */} 
-
     const pedido = [{
         uri : 'https://www.gourmet.cl/wp-content/uploads/2018/04/Foto-editada-1.jpg',
         nombre : 'Sopa de pollo',
