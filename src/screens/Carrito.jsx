@@ -24,6 +24,7 @@ const Carrito = ()=>{
         uri : 'https://www.gourmet.cl/wp-content/uploads/2018/04/Sopa-editada.jpg',
         id : 2,
         nombre : 'Sopa de verduras',
+<<<<<<< HEAD
         valor : 8.999,
         cantidad : aumentarValor,
     },
@@ -34,6 +35,17 @@ const Carrito = ()=>{
         valor : 8.999,
         cantidad : aumentarValor,
     },]
+=======
+        valor : '$9.999',
+        cantidad : 1,
+    },
+    {
+        uri : 'https://www.gourmet.cl/wp-content/uploads/2018/04/Sopa-editada.jpg',
+        nombre : 'Sopa de pato',
+        valor : '$9.999',
+        cantidad : 1,
+    }]
+>>>>>>> Oscar
  
     const sumar = (item)=>{
         let total = 0;
@@ -167,29 +179,9 @@ const Carrito = ()=>{
                 </View>
             </View>
         </View>
-            <View style={{
-                justifyContent : 'center',
-                alignItems : 'center',
-            }}>
-            <TouchableOpacity style={styles.pedidoBtn}>
-                <View style={{
-                    flexDirection : 'row',
-                    textAlign  : 'center',
-                    justifyContent : 'center'
-                }}>
-                    <Text style={{
-                        color : 'white',
-                        textAlign : 'center',
-                        fontWeight : 'bold',
-                        fontSize : 17,
-                       
-                        fontFamily : 'uber-move'
-                    }}>Enviar</Text>
-                </View>
-            </TouchableOpacity>
-            </View> 
+
         </View>
-        
+
     </View>
     )
 }

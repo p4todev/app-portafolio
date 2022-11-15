@@ -13,7 +13,7 @@ const PedidoEnviado = ()=>{
                 <Icon name="checkcircleo" size={240} style={styles.icono}/>
             </View>
             <View>
-                <Text style={styles.texto}>Se ha realizad el pedido!</Text>
+                <Text style={styles.texto}>Se ha realizado el pedido!</Text>
             </View>
         </View>
     )
