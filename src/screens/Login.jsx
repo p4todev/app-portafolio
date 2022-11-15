@@ -5,14 +5,20 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { StatusBar } from 'expo-status-bar';
 
     const Login = ()=>{
+        //TODO: Validar el login despues con estos datos de prueba.
+        const userTest = [{
+            "user" : "Patricio",
+            "pass" : "admin"
+        }];
         
         return(
-            <View style={styles.container}>
+            <View>
                 <View style={{alignItems : 'center'}} >
                     <View style={styles.foto}>
                     </View>
                 </View>
                 <Text style={styles.titulo}>Inicio sesion</Text>
+<<<<<<< HEAD
 <<<<<<< HEAD
                 <View styles={{alignItems : 'center'}}>
                     <TextInput style={styles.inputs} placeholder='Ingresa tu rut' />
@@ -24,6 +30,15 @@ import { StatusBar } from 'expo-status-bar';
                         }} >Ingresar</Text>
                     </TouchableOpacity>
                 </View>
+=======
+                <TextInput style={styles.inputs} placeholder='Ingresa tu rut' />
+                <TextInput style={styles.inputs} secureTextEntry={true} placeholder='Ingresa tu contraseña' />
+                <TouchableOpacity style={styles.boton}><Text style={{
+                    color : 'white',
+                    textAlign : 'center',
+                    fontWeight : 'bold',
+                }}>Ingresar</Text></TouchableOpacity>
+>>>>>>> parent of ca2774f (se sujbe el sitio)
                 <View>
                     <Text style={styles.pass}>Olvidaste la contraseña?, Click aqui!</Text>
                 </View>
@@ -37,15 +52,8 @@ import { StatusBar } from 'expo-status-bar';
         )
     }
     
-
-
-
-
     // ESTILOS
     const styles = StyleSheet.create({
-        container : {
-            marginTop : 100,
-        },
         foto : {
             backgroundColor : '#999',
             width : 150,
@@ -56,32 +64,31 @@ import { StatusBar } from 'expo-status-bar';
             textAlign : 'center',
             fontWeight : 'bold',
             fontSize : 30,
-            marginTop : 50,
+            marginTop : 10,
             marginBottom : 10,
         },
         inputs : {
             padding : 10,
-            marginLeft : 50,
-            marginRight : 50,
+            width : 250,
             marginBottom : 15,
             borderWidth : 1,
             borderColor : '#999',
             borderRadius : 8,
-            
         },
         boton : { 
             backgroundColor : 'black',
             textAlign : 'center',
             padding : 15,
             borderRadius : 8,
-            marginRight : 50,
-            marginLeft : 50,
         },
         pass : {
             color : '#3897FC',
             marginTop : 50,
 <<<<<<< HEAD
+<<<<<<< HEAD
             textAlign : 'center',
+=======
+>>>>>>> parent of ca2774f (se sujbe el sitio)
         }
 
 =======
