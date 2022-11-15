@@ -26,7 +26,7 @@ function Fonts(){
     }
   });
 }
-
+//probando si funciona
 function WindowLogin({ navigation }) {
   Fonts();
   return (
