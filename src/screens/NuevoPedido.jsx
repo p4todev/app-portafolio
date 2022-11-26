@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {
     StyleSheet,
     View,
@@ -15,9 +15,23 @@ import Icon from 'react-native-vector-icons/MaterialIcons'
 import SecodIcon from 'react-native-vector-icons/AntDesign'
 import Add from 'react-native-vector-icons/Ionicons'
 import data from '../dataTest/data';
+import { createIconSetFromFontello } from 'react-native-vector-icons';
 
 const Pedido = ()=>{
-    
+
+    const [dataPlatos,setData] = useState([]);
+    //"http://localhost:3000/platos"
+    //https://api.coindesk.com/v1/bpi/currentprice.json
+
+    useEffect(()=>{
+        fetch("https://api.coindesk.com/v1/bpi/currentprice.json")
+        .then(response => response.json())
+        .then((json)=>setData(json))
+        .then(console.log( "***** JSON: " + dataPlatos.chartName))
+        .catch((error)=>console.log( "***** MENSAJE DE ERROR: " + error))
+    },[])
+
+  
     const categorias = [
   
     {
@@ -45,6 +59,7 @@ const Pedido = ()=>{
         status : 'Promociones',
     },];
 
+
     const pedido =[{
         
     }]
@@ -61,6 +76,7 @@ const Pedido = ()=>{
     }
 
     const renderItem = ({item,index}) => {
+
         return (
             <View key={item} >
                 <ScrollView showsVerticalScrollIndicator={false}>
@@ -131,12 +147,11 @@ const Pedido = ()=>{
             </ScrollView>
         </View>
 
-
-
-        <FlatList FlatList data={dataList} keyExtractor={(e,i)=>i.toString()}
+        <FlatList FlatList data={datatest} keyExtractor={(e,i)=>i.toString()}
             renderItem={renderItem}>
        
         </FlatList>
+
      </View>
     )
 }

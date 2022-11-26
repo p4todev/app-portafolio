@@ -13,6 +13,7 @@ import Mesas from './src/screens/Mesas';
 import PedidoEnviado from './src/screens/PedidoEnviado';
 import Carrito from './src/screens/Carrito';
 import TestBar from './src/screens/barTest';
+import TestList from './src/screens/testList';
 
 import * as Font from 'expo-font'
 
@@ -117,7 +118,7 @@ function WindowMesas({ navigation }) {
 function WindowNuevoPedido({ navigation }) {
   return (
     <View style={styles.container}>
-      <Pedido />
+      <TestList />
       <View style={{ alignItems : 'center',}}>
           <TouchableOpacity style={styles.pedidoBtn} onPress={() => navigation.navigate('Carrito')}>
             <View style={{ flexDirection : 'row', textAlign  : 'center', justifyContent : 'center'}}>
