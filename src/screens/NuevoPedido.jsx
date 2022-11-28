@@ -57,7 +57,8 @@ const Pedido = ()=>{
     },
     {
         status : 'Promociones',
-    },];
+    },
+    ];
 
 
     const pedido =[{
